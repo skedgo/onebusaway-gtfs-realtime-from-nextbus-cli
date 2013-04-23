@@ -73,7 +73,7 @@ public class NextBusApiService {
       throws IOException, SAXException {
       try {
           String url = new URI("http","webservices.nextbus.com","/service/publicXMLFeed",
-                  "command=routeConfig&a="+_agencyId+"&r="+routeTag).toASCIIString();
+                  "command=routeConfig&a="+_agencyId+"&r="+routeTag, "").toASCIIString();
           return (List<NBRoute>) digestUrl(url, true);
       } catch (URISyntaxException e) {
           e.printStackTrace();
