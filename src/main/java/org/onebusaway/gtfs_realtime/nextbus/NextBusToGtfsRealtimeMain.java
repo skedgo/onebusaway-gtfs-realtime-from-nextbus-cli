@@ -15,13 +15,9 @@
  */
 package org.onebusaway.gtfs_realtime.nextbus;
 
-import java.io.File;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.inject.Inject;
-
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.google.inject.Module;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.GnuParser;
 import org.apache.commons.cli.Option;
@@ -38,9 +34,11 @@ import org.onebusway.gtfs_realtime.exporter.GtfsRealtimeExporterModule;
 import org.onebusway.gtfs_realtime.exporter.TripUpdatesFileWriter;
 import org.onebusway.gtfs_realtime.exporter.TripUpdatesServlet;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.google.inject.Module;
+import javax.inject.Inject;
+import java.io.File;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NextBusToGtfsRealtimeMain {
 

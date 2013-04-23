@@ -15,6 +15,29 @@
  */
 package org.onebusaway.gtfs_realtime.nextbus.services;
 
+import com.google.transit.realtime.GtfsRealtime.FeedEntity;
+import com.google.transit.realtime.GtfsRealtime.FeedMessage;
+import com.google.transit.realtime.GtfsRealtime.TripDescriptor;
+import com.google.transit.realtime.GtfsRealtime.TripUpdate;
+import com.google.transit.realtime.GtfsRealtime.TripUpdate.StopTimeEvent;
+import com.google.transit.realtime.GtfsRealtime.TripUpdate.StopTimeUpdate;
+import com.google.transit.realtime.GtfsRealtime.VehicleDescriptor;
+import org.onebusaway.collections.MappingLibrary;
+import org.onebusaway.gtfs_realtime.nextbus.model.FlatPrediction;
+import org.onebusaway.gtfs_realtime.nextbus.model.RouteStopCoverage;
+import org.onebusaway.gtfs_realtime.nextbus.model.api.NBDirection;
+import org.onebusaway.gtfs_realtime.nextbus.model.api.NBPrediction;
+import org.onebusaway.gtfs_realtime.nextbus.model.api.NBPredictions;
+import org.onebusway.gtfs_realtime.exporter.GtfsRealtimeLibrary;
+import org.onebusway.gtfs_realtime.exporter.GtfsRealtimeProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.xml.sax.SAXException;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,31 +50,6 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
-import org.onebusaway.collections.MappingLibrary;
-import org.onebusaway.gtfs_realtime.nextbus.model.FlatPrediction;
-import org.onebusaway.gtfs_realtime.nextbus.model.RouteStopCoverage;
-import org.onebusaway.gtfs_realtime.nextbus.model.api.NBDirection;
-import org.onebusaway.gtfs_realtime.nextbus.model.api.NBPrediction;
-import org.onebusaway.gtfs_realtime.nextbus.model.api.NBPredictions;
-import org.onebusway.gtfs_realtime.exporter.GtfsRealtimeProvider;
-import org.onebusway.gtfs_realtime.exporter.GtfsRealtimeLibrary;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.xml.sax.SAXException;
-
-import com.google.transit.realtime.GtfsRealtime.FeedEntity;
-import com.google.transit.realtime.GtfsRealtime.FeedMessage;
-import com.google.transit.realtime.GtfsRealtime.TripDescriptor;
-import com.google.transit.realtime.GtfsRealtime.TripUpdate;
-import com.google.transit.realtime.GtfsRealtime.TripUpdate.StopTimeEvent;
-import com.google.transit.realtime.GtfsRealtime.TripUpdate.StopTimeUpdate;
-import com.google.transit.realtime.GtfsRealtime.VehicleDescriptor;
 
 @Singleton
 public class NextBusToGtfsRealtimeService implements GtfsRealtimeProvider {
