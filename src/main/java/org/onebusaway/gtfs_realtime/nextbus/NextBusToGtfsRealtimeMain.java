@@ -63,7 +63,7 @@ public class NextBusToGtfsRealtimeMain {
 
   private NextBusToGtfsService _matchingService;
 
-  private LifecycleService _lifecycleService;
+  public LifecycleService _lifecycleService;
 
   @Inject
   public void setNextBusApiService(NextBusApiService nextBusApiService) {

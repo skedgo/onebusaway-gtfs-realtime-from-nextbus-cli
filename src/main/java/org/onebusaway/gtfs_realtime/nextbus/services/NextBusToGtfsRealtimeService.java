@@ -152,7 +152,7 @@ public class NextBusToGtfsRealtimeService implements GtfsRealtimeProvider {
   private void processRouteStopCoverage(RouteStopCoverage routeStopCoverage)
       throws IOException, SAXException {
 
-    _log.info("route=" + routeStopCoverage.getRouteTag());
+    //_log.info("route=" + routeStopCoverage.getRouteTag());
 
     List<NBPredictions> allPredictions = _nextBusApiService.downloadPredictions(routeStopCoverage);
     List<FlatPrediction> flatPredictions = flattenPredictions(allPredictions);
@@ -278,7 +278,7 @@ public class NextBusToGtfsRealtimeService implements GtfsRealtimeProvider {
         long remainingTime = _minimumTimeBetweenRequests * 1000 - (t1 - t0);
         if (remainingTime > 0) {
           try {
-            _log.info("sleeping for " + remainingTime);
+            //_log.info("sleeping for " + remainingTime);
             Thread.sleep(remainingTime);
           } catch (InterruptedException e) {
             return;
