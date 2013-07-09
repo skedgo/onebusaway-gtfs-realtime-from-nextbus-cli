@@ -49,5 +49,6 @@
     <orderEntry type="library" name="Maven: com.vividsolutions:jts:1.8" level="project" />
     <orderEntry type="library" name="Maven: edu.washington.cs.rse:javaproj:1.0.4" level="project" />
   </component>
+  <component name="POM File Configuration" pomFile="file://$MODULE_DIR$/pom.xml" />
 </module>
 
