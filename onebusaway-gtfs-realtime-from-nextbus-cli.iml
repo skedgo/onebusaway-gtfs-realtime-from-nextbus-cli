@@ -10,10 +10,13 @@
       <excludeFolder url="file://$MODULE_DIR$/target/classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/maven-archiver" />
       <excludeFolder url="file://$MODULE_DIR$/target/surefire" />
-      <excludeFolder url="file://$MODULE_DIR$/target/test-classes" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.onebusaway:onebusaway-core:1.1.10" level="project" />
+    <orderEntry type="library" name="Maven: org.onebusaway:onebusaway-cli:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.onebusaway:onebusaway-geospatial:1.1.10" level="project" />
+    <orderEntry type="library" name="Maven: com.vividsolutions:jts:1.10" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.0.1" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.1.1" level="project" />
