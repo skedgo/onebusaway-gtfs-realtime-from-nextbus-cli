@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.onebusaway:onebusaway-geospatial:1.1.10">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/onebusaway/onebusaway-geospatial/1.1.10/onebusaway-geospatial-1.1.10.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/onebusaway/onebusaway-geospatial/1.1.10/onebusaway-geospatial-1.1.10-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/onebusaway/onebusaway-geospatial/1.1.10/onebusaway-geospatial-1.1.10-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
