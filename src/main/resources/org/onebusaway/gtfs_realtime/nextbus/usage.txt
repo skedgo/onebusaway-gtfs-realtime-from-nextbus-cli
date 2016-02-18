@@ -10,7 +10,9 @@ Args:
   --tripUpdatesUrl=url         url to share GTFS-realtime trip updates output
   --vehiclePositionsPath=path  path to write GTFS-realtime vehicle positions output
   --vehiclePositionsUrl=url    url to share GTFS-realtime vehicle positions output
-  
+  --alertsPath=path            path to write GTFS-realtime alerts output
+  --alertsUrl=url              url to share GTFS-realtime alerts output
+
   --cacheDir=path              When specified, some expensive / infrequently-changing requests from the NextBus API
                                will be cached to disk
                                
