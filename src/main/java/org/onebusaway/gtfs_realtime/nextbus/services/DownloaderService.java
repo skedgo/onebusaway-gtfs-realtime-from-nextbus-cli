@@ -63,7 +63,16 @@ public class DownloaderService {
 
     HttpUriRequest request = new HttpGet(uri);
     request.addHeader("Accept-Encoding", "gzip");
-    HttpResponse response = _client.execute(request);
+    HttpResponse response;
+    try {
+      response = _client.execute(request);
+    } catch (java.lang.IllegalStateException e) {
+      // Invalid use of SingleClientConnManager: connection still allocated.
+      // Make sure to release the connection before allocating another one.
+      e.printStackTrace();
+      _client = new DefaultHttpClient();
+      response = _client.execute(request);
+    }
     HttpEntity entity = response.getEntity();
 
     noteDownload(entity);
