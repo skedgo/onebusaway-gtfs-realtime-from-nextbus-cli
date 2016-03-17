@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.concurrent.TimeUnit;
 import java.util.zip.GZIPInputStream;
 
 import javax.inject.Singleton;
@@ -29,6 +30,9 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,7 +48,9 @@ public class DownloaderService {
 
   private static final Logger _log = LoggerFactory.getLogger(DownloaderService.class);
 
-  private DefaultHttpClient _client = new DefaultHttpClient();
+  private static final HttpParams _http_params = geHttpParams();
+
+  private DefaultHttpClient _client = new DefaultHttpClient(_http_params);
 
   private Deque<DownloadRecord> _downloaded = new ArrayDeque<DownloadRecord>();
 
@@ -70,7 +76,7 @@ public class DownloaderService {
       // Invalid use of SingleClientConnManager: connection still allocated.
       // Make sure to release the connection before allocating another one.
       e.printStackTrace();
-      _client = new DefaultHttpClient();
+      _client = new DefaultHttpClient(_http_params);
       response = _client.execute(request);
     }
     HttpEntity entity = response.getEntity();
@@ -121,6 +127,14 @@ public class DownloaderService {
       Thread.sleep(delay);
     } catch (InterruptedException e) {
     }
+  }
+
+  // http://stackoverflow.com/a/16088629/192798
+  private static HttpParams geHttpParams() {
+    HttpParams httpParams = new BasicHttpParams();
+    HttpConnectionParams.setConnectionTimeout(httpParams, (int) TimeUnit.SECONDS.toMillis(5));
+    HttpConnectionParams.setSoTimeout(httpParams, (int) TimeUnit.SECONDS.toMillis(5));
+    return httpParams;
   }
 
   private static class DownloadRecord {
